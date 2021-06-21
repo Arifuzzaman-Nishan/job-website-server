@@ -141,10 +141,21 @@ client.connect((err) => {
     });
   });
 
+  // get specific job post
+  app.post('/specificPost',(req,res) => {
+    console.log(req.body.email);
+    jobPostCollection.find({email: req.body.email})
+    .toArray((err, documents) => {
+      res.send(documents);
+    });
+  })
+
   console.log("db connected");
   // perform actions on the collection object
   // client.close();
 });
+
+
 
 // routing setup
 
